@@ -18,8 +18,6 @@ while wlan.isconnected() == False:
     time.sleep(1)
 print("Connected to WiFi")
 
-mqtt_subscribe_topic = "my_own_topic/message"
-
 # Initialize our MQTTClient and connect to the MQTT server
 mqtt_client = MQTTClient(
         client_id=mqtt_client_id,
@@ -30,15 +28,14 @@ mqtt_client = MQTTClient(
         user=mqtt_user,
         password=mqtt_password)
 
-#
+
 def message_received(topic, response):
     print("Message received!")
     print(f"message: {response}")
     print(f"topic: {topic}")
-    
-    # Message comes as a byte string, if we know that string is JSON, we can load it in to a python dictionary
-    as_dict = json.loads(str(response))
-    print(as_dict)
+
+
+mqtt_subscribe_topic = "my_own_topic/message"
     
 mqtt_client.connect()
 mqtt_client.set_callback(message_received)

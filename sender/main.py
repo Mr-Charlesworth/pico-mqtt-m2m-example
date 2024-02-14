@@ -19,7 +19,7 @@ while wlan.isconnected() == False:
 print("Connected to WiFi")
 
 # Your topic can be created in your device profile on thingsboardshu.cloud
-mqtt_publish_topic = "my_own_topic/message"
+mqtt_publish_topic = "home/test"
 
 # Initialize our MQTTClient and connect to the MQTT server
 mqtt_client = MQTTClient(
@@ -35,6 +35,7 @@ mqtt_client.connect()
 
 button = Pin(0, Pin.IN, Pin.PULL_UP)
 message_sent = False
+print("everything setup and connected")
 
 try:
     while True:
